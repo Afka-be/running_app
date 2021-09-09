@@ -1,4 +1,4 @@
-initProfile_UI <- function(id){
+userProfile_UI <- function(id){
     ns <- NS(id)
     tagList(
         textOutput(ns("currentWeight")),
@@ -6,7 +6,7 @@ initProfile_UI <- function(id){
     )
 }
 
-initProfile_server <- function(id) {
+userProfile_server <- function(id) {
     moduleServer(
         id,
         function(input, output, session) {

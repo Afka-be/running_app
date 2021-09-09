@@ -35,7 +35,7 @@ ui <- dashboardPage(
       tabItem(
         tabName = "homepage",
         box(h1("Welcome"), title = "How to use", width = 16, color = "orange",
-          initProfile_UI("init")
+          userProfile_UI("init")
         )
       ),
       tabItem(
@@ -46,6 +46,7 @@ ui <- dashboardPage(
               stats_UI("run_distance"),
               stats_UI("run_time"),
               stats_UI("run_pace"),
+              statsCalories_UI("run_calories"),
               verbatimTextOutput('testtext'),
               leafletOutput('map')
           ), #fluidRow
