@@ -35,7 +35,7 @@ ui <- dashboardPage(
       tabItem(
         tabName = "homepage",
         box(h1("Welcome"), title = "How to use", width = 16, color = "orange",
-          actionButton("button_modal", "CLICK IT")
+          initProfile_UI("init")
         )
       ),
       tabItem(
