@@ -34,7 +34,9 @@ ui <- dashboardPage(
       selected = 1,
       tabItem(
         tabName = "homepage",
-        box(h1("Welcome"), title = "How to use", width = 16, color = "orange")
+        box(h1("Welcome"), title = "How to use", width = 16, color = "orange",
+          actionButton("button_modal", "CLICK IT")
+        )
       ),
       tabItem(
         tabName = "running",
@@ -42,6 +44,8 @@ ui <- dashboardPage(
               #shiny::dateInput(),
               selectRun_UI("run_date"),
               stats_UI("run_distance"),
+              stats_UI("run_time"),
+              stats_UI("run_pace"),
               verbatimTextOutput('testtext'),
               leafletOutput('map')
           ), #fluidRow

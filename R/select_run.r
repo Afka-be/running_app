@@ -1,3 +1,4 @@
+#' UI -> Display the Calendar and the run select dropdown
 selectRun_UI <- function(id) {
     ns <- NS(id)
     tagList(
@@ -8,26 +9,31 @@ selectRun_UI <- function(id) {
                         update_on = "change",
                         dateFormat = "yyyy-mm-dd",
                         clearButton = TRUE,
+                        maxDate = Sys.Date(),
                         disabledDates = disabled_dates),
         uiOutput(ns("selectIfMultipleRunsPerDay"))
     )
 
 }
 
-#test description
+#' Create the Calendar and the run select dropdown
+#' The run select dropdown only appears when a day contains multiple runs
+#' Returns a list of reactive :
+#' - theDate = Outputs dynamically the selected date
+#' - theRun = Outputs dynamically the selected if multiple runs that date
 selectRun_server <- function(id) {
     moduleServer(
         id,
         function(input, output, session) {
             ns <- session$ns
             #we need the ns domain space because we use a renderUI and need to pass the ns from the server and not directly from the UI this time
-            #this is needed because we have to store and access the input$select_run outside of this module
+            #this is needed because we have to store and access the input$select_run as a reactive outside of this module
             #we use this reactive value in running_stats.r
 
             getDataTable <- reactive({
-                #check if empty or not for the req in the rendervalueboxes
+                #check if empty or not for the req in the rendervalueboxes'
                 if (!is.null(input$select_date)) {
-                    dt[date == input$select_date]
+                    dt_runs[date == input$select_date]
                 }
             })
 

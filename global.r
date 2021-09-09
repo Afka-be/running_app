@@ -3,6 +3,7 @@ library(shinyWidgets)
 #library(shinydashboard)
 library(shiny.semantic)
 library(semantic.dashboard)
+library(shinyjs)
 library(plotly) #Spiderchart
 library(robservable)
 library(tidyverse) #Needed for read_csv (not to be confused with read.csv)
