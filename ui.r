@@ -48,7 +48,7 @@ ui <- dashboardPage(
               stats_UI("run_pace"),
               statsCalories_UI("run_calories"),
               verbatimTextOutput('testtext'),
-              leafletOutput('map')
+              runningMap_UI("run_map")
           ), #fluidRow
           fluidRow(
           ) #fluidRow
