@@ -10,11 +10,12 @@
 
 /* Variables */
 $colors: (
-    primary:  #0d1524,
+    primary: rgba(0,0,0,0.5),
     /* primary-light: lighten(#0d1524, 12%),*/
-    primary-light : #1d2535,
-    primary-dark: darken(#0d1524, 12%),
-    highlighted : #e0a32b,
+    primary-light : linear-gradient(to right bottom, #60ab9d, #b33e9a, #8d3495, #632d8e, #2f2784),
+    primary-dark: darken(#d74c9c, 12%),
+    background : linear-gradient(to right bottom, #60ab9d, #2f2784),
+    highlighted : #ed7752,
     highlighted-text : #0d1524,
     button-confirm : #15a556,
     theme-purple : linear-gradient(to right, #8651e8,#d856e8),
@@ -23,7 +24,7 @@ $colors: (
     theme-orange-icon : #b626269f,
     theme-green : linear-gradient(to right, #00d541, #2eeb90),
     theme-green-icon : #069446eb,
-    theme-blue : linear-gradient(to right, #4146f4, #0bdff0),
+    theme-blue : linear-gradient(to right, #4973e6, #0bdff0),
     theme-blue-icon : #003086c2,
     theme-yellow : linear-gradient(to right, #f8aa21, #f99429),
     theme-yellow-icon : #df6508b3,
@@ -42,6 +43,115 @@ body, h1, h2, h3, h4, h5 {
     color:white;
     a {
         font-family: $sansserif !important; 
+    }    
+}
+
+.dashboard-page {
+    background: color(background); /* full background */
+}
+.ui.inverted.menu {
+    background:rgba(168,188,220,0.2); /* top header */
+    overflow:hidden;
+}
+.dashboard-title {
+    background-color:rgba(0,0,0,0) !important /* Logo background reset */
+}
+.ui.inverted.menu .active.item {
+    background-color: color(highlighted);
+}
+.ui.dashboard-sidebar {
+    background: url('../images/sport-bg.png')!important /* Sidebar menu */;
+}
+.ui.segment {
+    background:rgba(255,255,255,0) /* tab-content */
+}
+.tab-content .grid {
+    padding:20px; 
+}
+.ui.sidebar.left {
+    border:none;
+}
+.run-container {
+    padding:30px;
+    background-color:rgba(255, 255, 255, 0.3);
+    border-radius:10px;
+    box-shadow: 0 2px 4px 0 rgb(34 36 38 / 12%), 0 2px 10px 0 rgb(34 36 38 / 15%);
+    .date_container {
+        width:100%;
+        border-radius:5px;
+        background: #69a0a7;
+        padding:20px;
+        label {
+            font:light 1.6rem sans-serif !important;
+            text-transform:uppercase !important;
+            color:white;
+        }
+        input {
+            margin-top:5px;
+        }
+        i {
+            display:none;
+        }
+    }
+    .stats-container{
+        display:flex !important;
+        justify-content:space-between;
+        flex-wrap:wrap;
+        margin-bottom:25px;
+        > div {
+            width:23%;
+        }
+        .five {
+            width: 25% !important;
+            height:80px !important;
+        }
+    }
+    .form-group {
+        margin-bottom:15px;
+    }
+    
+}
+.custom_card {
+    background-color:white;
+    border-radius:5px;
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    align-items:flex-end;
+    justify-content:flex-end;
+    margin-top:35px;
+    padding:20px; 
+    box-shadow:0 2px 4px 0 rgb(34 36 38 / 12%), 0 2px 10px 0 rgb(34 36 38 / 15%);  
+
+    h3 {
+        color:rgb(10, 10, 10);
+        font-size:1.8rem;
+        margin:0 !important;
+    }
+    p {
+        color:rgb(10, 10, 10);
+        margin:0 !important;
+    }
+    .icon_card {
+        width:70px;
+        height:70px;
+        padding:10px;
+        position:absolute;
+        top:-24px;
+        left:11px;
+        border-radius:50%;
+    }
+    .icon_blue {
+        background:color(theme-blue);
+    }
+    .icon_green {
+        background:color(theme-green);
+    }
+    .icon_orange {
+        background:color(theme-orange);
+    }
+    .icon_purple {
+        background:color(theme-purple);
     }
 }
 .button-cta-fill {
@@ -146,8 +256,9 @@ body, h1, h2, h3, h4, h5 {
 }
 
 /* CSS */
-.goat_logo {
+.running_logo {
     width:100%;
+    background-color:rgba(255,255,255,0) !important;
     a {
         width:100%;
     }
@@ -157,20 +268,6 @@ body, h1, h2, h3, h4, h5 {
 }
 .ui.top.menu.dashboard-header .logo {
     height:60px;
-}
-.ui.inverted.menu {
-    background-color:color(primary);
-}
-.ui.inverted.menu .active.item {
-    background-color:color(highlighted);
-}
-.ui.segment {
-    background-color: color(primary);
-}
-.ui {
-    .tab-content {
-        background-color:color(primary-light);
-    }
 }
 .choose_player_window {
     display:flex;

@@ -13,6 +13,145 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
   font-family: "Montserrat", sans-serif !important;
 }
 
+.dashboard-page {
+  background: -webkit-gradient(linear, left top, right bottom, from(#60ab9d), to(#2f2784));
+  background: linear-gradient(to right bottom, #60ab9d, #2f2784);
+  /* full background */
+}
+
+.ui.inverted.menu {
+  background: rgba(168, 188, 220, 0.2);
+  /* top header */
+  overflow: hidden;
+}
+
+.dashboard-title {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.ui.inverted.menu .active.item {
+  background-color: #ed7752;
+}
+
+.ui.dashboard-sidebar {
+  background: url("../images/sport-bg.png") !important;
+}
+
+.ui.segment {
+  background: rgba(255, 255, 255, 0);
+}
+
+.tab-content .grid {
+  padding: 20px;
+}
+
+.ui.sidebar.left {
+  border: none;
+}
+
+.run-container {
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+          box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+}
+.run-container .date_container {
+  width: 100%;
+  border-radius: 5px;
+  background: #69a0a7;
+  padding: 20px;
+}
+.run-container .date_container label {
+  font: light 1.6rem sans-serif !important;
+  text-transform: uppercase !important;
+  color: white;
+}
+.run-container .date_container input {
+  margin-top: 5px;
+}
+.run-container .date_container i {
+  display: none;
+}
+.run-container .stats-container {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+.run-container .stats-container > div {
+  width: 23%;
+}
+.run-container .stats-container .five {
+  width: 25% !important;
+  height: 80px !important;
+}
+.run-container .form-group {
+  margin-bottom: 15px;
+}
+
+.custom_card {
+  background-color: white;
+  border-radius: 5px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-top: 35px;
+  padding: 20px;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+          box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+}
+.custom_card h3 {
+  color: #0a0a0a;
+  font-size: 1.8rem;
+  margin: 0 !important;
+}
+.custom_card p {
+  color: #0a0a0a;
+  margin: 0 !important;
+}
+.custom_card .icon_card {
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  position: absolute;
+  top: -24px;
+  left: 11px;
+  border-radius: 50%;
+}
+.custom_card .icon_blue {
+  background: -webkit-gradient(linear, left top, right top, from(#4973e6), to(#0bdff0));
+  background: linear-gradient(to right, #4973e6, #0bdff0);
+}
+.custom_card .icon_green {
+  background: -webkit-gradient(linear, left top, right top, from(#00d541), to(#2eeb90));
+  background: linear-gradient(to right, #00d541, #2eeb90);
+}
+.custom_card .icon_orange {
+  background: -webkit-gradient(linear, left top, right top, from(#f3595a), to(#ff9754));
+  background: linear-gradient(to right, #f3595a, #ff9754);
+}
+.custom_card .icon_purple {
+  background: -webkit-gradient(linear, left top, right top, from(#8651e8), to(#d856e8));
+  background: linear-gradient(to right, #8651e8, #d856e8);
+}
+
 .button-cta-fill, #players-chart button, .ui.button {
   cursor: pointer;
   display: inline-block;
@@ -32,14 +171,14 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
   transition: 0.2s all !important;
 }
 .button-cta-fill:hover, #players-chart button:hover, .ui.button:hover {
-  background-color: #e0a32b;
+  background-color: #ed7752;
 }
 .button-cta-fill:active, #players-chart button:active, .ui.button:active, .button-cta-fill:focus, #players-chart button:focus, .ui.button:focus {
-  background-color: #e0a32b;
+  background-color: #ed7752;
 }
 
 .ui.label {
-  background-color: #e0a32b;
+  background-color: #ed7752;
 }
 
 .ui.form .field > label {
@@ -57,7 +196,7 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
 
 .ui.card, .ui.cards > .card {
   display: relative;
-  background-color: #0d1524;
+  background-color: rgba(0, 0, 0, 0.5);
   border: none;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
@@ -71,7 +210,7 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
   left: 20px;
   top: 20px;
   font-size: 1.6em;
-  color: #0d1524;
+  color: rgba(0, 0, 0, 0.5);
 }
 .ui.card.purple, .ui.cards > .card.purple {
   background: -webkit-gradient(linear, left top, right top, from(#8651e8), to(#d856e8));
@@ -95,8 +234,8 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
   color: #069446eb;
 }
 .ui.card.blue, .ui.cards > .card.blue {
-  background: -webkit-gradient(linear, left top, right top, from(#4146f4), to(#0bdff0));
-  background: linear-gradient(to right, #4146f4, #0bdff0);
+  background: -webkit-gradient(linear, left top, right top, from(#4973e6), to(#0bdff0));
+  background: linear-gradient(to right, #4973e6, #0bdff0);
 }
 .ui.card.blue i, .ui.cards > .card.blue i {
   color: #003086c2;
@@ -115,22 +254,23 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
 }
 
 .ui.statistic > .value, .ui.statistics .statistic > .value {
-  color: #0d1524;
+  color: rgba(0, 0, 0, 0.5);
   padding-right: 15%;
   text-align: right;
 }
 
 .ui.statistic > .label, .ui.statistics .statistic > .label {
-  color: #0d1524;
+  color: rgba(0, 0, 0, 0.5);
   text-align: right;
   padding-right: 15%;
 }
 
 /* CSS */
-.goat_logo {
+.running_logo {
   width: 100%;
+  background-color: rgba(255, 255, 255, 0) !important;
 }
-.goat_logo a {
+.running_logo a {
   width: 100%;
 }
 
@@ -140,22 +280,6 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
 
 .ui.top.menu.dashboard-header .logo {
   height: 60px;
-}
-
-.ui.inverted.menu {
-  background-color: #0d1524;
-}
-
-.ui.inverted.menu .active.item {
-  background-color: #e0a32b;
-}
-
-.ui.segment {
-  background-color: #0d1524;
-}
-
-.ui .tab-content {
-  background-color: #1d2535;
 }
 
 .choose_player_window {
@@ -225,7 +349,7 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
   height: 401px !important;
 }
 .playerstats_tabset .ui.segment {
-  border-top: 2px solid #e0a32b;
+  border-top: 2px solid #ed7752;
 }
 .playerstats_tabset .ui.attached.segment {
   border: none;
@@ -233,11 +357,11 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
 .playerstats_tabset a.item {
   color: white !important;
   border: none !important;
-  background-color: #0d1524 !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 .playerstats_tabset a.active {
-  border-bottom: 2px solid #e0a32b !important;
-  background-color: #1d2535 !important;
+  border-bottom: 2px solid #ed7752 !important;
+  background-color: linear-gradient(to right bottom, #60ab9d, #b33e9a, #8d3495, #632d8e, #2f2784) !important;
 }
 .playerstats_tabset .hint--left:after, .playerstats_tabset .hint--left:before {
   right: 60%;
@@ -257,7 +381,7 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
   padding: 0 !important;
 }
 .playerspidercharts_tabset .ui.segment {
-  border-top: 2px solid #e0a32b;
+  border-top: 2px solid #ed7752;
 }
 .playerspidercharts_tabset .ui.attached.segment {
   border: none;
@@ -265,11 +389,11 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
 .playerspidercharts_tabset a.item {
   color: white !important;
   border: none !important;
-  background-color: #0d1524 !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 .playerspidercharts_tabset a.active {
-  border-bottom: 2px solid #e0a32b !important;
-  background-color: #1d2535 !important;
+  border-bottom: 2px solid #ed7752 !important;
+  background-color: linear-gradient(to right bottom, #60ab9d, #b33e9a, #8d3495, #632d8e, #2f2784) !important;
 }
 .playerspidercharts_tabset .hint--left:after, .playerspidercharts_tabset .hint--left:before {
   right: 60%;
@@ -279,10 +403,10 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
 }
 .playerspidercharts_tabset .plotly .main-svg:first-child {
   border-radius: 5px;
-  background: #0d1524 !important;
+  background: rgba(0, 0, 0, 0.5) !important;
 }
 .playerspidercharts_tabset .plotly .plotbg path {
-  fill: #0d1524 !important;
+  fill: rgba(0, 0, 0, 0.5) !important;
 }
 .playerspidercharts_tabset .plotly .radial-line line {
   stroke: white !important;
@@ -291,7 +415,7 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
   fill: white !important;
 }
 .playerspidercharts_tabset .plotly .angularaxistick text {
-  fill: #e0a32b !important;
+  fill: #ed7752 !important;
 }
 
 #players-chart {
@@ -311,12 +435,12 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
   display: none;
 }
 #players-chart .yearText {
-  fill: #e0a32b;
+  fill: #ed7752;
 }
 #players-chart .valueLabel {
   fill: white;
 }
 #players-chart .label {
   font: 600 1em "Montserrat", sans-serif;
-  color: #0d1524;
+  color: rgba(0, 0, 0, 0.5);
 }

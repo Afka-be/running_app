@@ -1,8 +1,7 @@
 ui <- dashboardPage(
   margin = FALSE,
-  dashboardHeader(title = tags$div(class = 'goat_logo',
-                            tags$a(href='#',
-                            tags$img(src='images/logo_app.svg')),
+  dashboardHeader(title = tags$div(class = 'running_logo',
+                            tags$img(src='images/logo_app.svg'),
                           ),
                   logo_path = "images/logo.svg",
                   logo_align = "right",
@@ -40,18 +39,27 @@ ui <- dashboardPage(
       ),
       tabItem(
         tabName = "running",
-          fluidRow(
-              #shiny::dateInput(),
-              selectRun_UI("run_date"),
-              stats_UI("run_distance"),
-              stats_UI("run_time"),
-              stats_UI("run_pace"),
-              statsCalories_UI("run_calories"),
-              verbatimTextOutput('testtext'),
-              runningMap_UI("run_map")
-          ), #fluidRow
-          fluidRow(
-          ) #fluidRow
+          column(8, class = "run-container",
+            fluidRow(
+                #shiny::dateInput(),
+                selectRun_UI("run_date"),
+                fluidRow(class = "stats-container",
+                  stats_UI("run_distance"),
+                  stats_UI("run_time"),
+                  stats_UI("run_pace"),
+                  statsCalories_UI("run_calories"),
+                ), #fluidRow
+                runningMap_UI("run_map")
+            ), #fluidRow
+            fluidRow(
+            ) #fluidRow
+          ), #column
+          column(8, class = "run-overview-container",
+            fluidRow(
+              selectRunOverview_UI("run_overview"),
+              runOverview_UI("run_overview")
+            ), #fluidRow
+          ) #column
         ) #tabName player
     ) #tabItems
   )

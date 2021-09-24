@@ -1,17 +1,19 @@
 #' UI -> Display the Calendar and the run select dropdown
 selectRun_UI <- function(id) {
     ns <- NS(id)
-    tagList(
-        airDatepickerInput(
-                        inputId = ns("select_date"),
-                        label = "Select the day",
-                        placeholder = "You can pick a date",
-                        update_on = "change",
-                        dateFormat = "yyyy-mm-dd",
-                        clearButton = TRUE,
-                        maxDate = Sys.Date(),
-                        disabledDates = disabled_dates),
-        uiOutput(ns("selectIfMultipleRunsPerDay"))
+    fluidRow(class = "date_container",
+        tagList(
+            airDatepickerInput(
+                            inputId = ns("select_date"),
+                            label = "Select the day",
+                            placeholder = "You can pick a date",
+                            update_on = "change",
+                            dateFormat = "yyyy-mm-dd",
+                            clearButton = TRUE,
+                            maxDate = Sys.Date(),
+                            disabledDates = disabled_dates),
+            uiOutput(ns("selectIfMultipleRunsPerDay"))
+        )
     )
 
 }

@@ -2,14 +2,14 @@
 #'
 stats_UI <- function(id) {
     ns <- NS(id)
-    valueBoxOutput(ns("stats"))
+    uiOutput(ns("stats"))
 }
 
 #' UI -> Display a box to display the Calories of the run
 #'
 statsCalories_UI <- function(id) {
     ns <- NS(id)
-    valueBoxOutput(ns("stats"))
+    uiOutput(ns("stats"))
 }
 
 #' Create a box to display the general stats of the run
@@ -27,7 +27,7 @@ stats_server <- function(id, date, whichRun, weight, value, column, subtitle, ic
         id,
         function(input, output, session) {
 
-        output$stats <- renderValueBox({
+        output$stats <- renderUI({
             #if no date is selected, nothing is displayed
             #req is mainly used here to prevent the display of error message if selected date is empty
             req(date())
@@ -51,12 +51,14 @@ stats_server <- function(id, date, whichRun, weight, value, column, subtitle, ic
                 value <- data[1, column, with = FALSE] #with = FALSE because otherwise, column name via variable does not work
             }
 
-            valueBox(
-            value = value,
-            subtitle = subtitle,
-            icon = icon(icon),
-            color = color,
-            width = 3)
+            HTML(paste0("<div class = 'custom_card'>",
+                        "<div class = 'icon_card icon_",color,"'>",
+                        "<img src='images/",icon,".svg'>",
+                        "</div>",
+                        "<p>", subtitle, "</p>",
+                        "<h3>", value, "</h3>",
+                        "</div>"),
+                        sep = "")
         })
 
     })
@@ -78,7 +80,7 @@ statsCalories_server <- function(id, date, whichRun, weight, value, column, subt
         id,
         function(input, output, session) {
 
-        output$stats <- renderValueBox({
+        output$stats <- renderUI({
             #if no date is selected, nothing is displayed
             #req is mainly used here to prevent the display of error message if selected date is empty
             req(date())
@@ -103,12 +105,14 @@ statsCalories_server <- function(id, date, whichRun, weight, value, column, subt
                 value <- as.numeric(weight()) * 1.028 * data[1, km] #calories lost => 1.028kcal * weight in kg * distance in km
             }
 
-            valueBox(
-            value = value,
-            subtitle = subtitle,
-            icon = icon(icon),
-            color = color,
-            width = 3)
+            HTML(paste0("<div class = 'custom_card'>",
+                        "<div class = 'icon_card icon_",color,"'>",
+                        "<img src='images/",icon,".svg'>",
+                        "</div>",
+                        "<p>", subtitle, "</p>",                        
+                        "<h3>", value, "</h3>",                        
+                        "</div>"),
+                        sep = "")
         })
 
     })

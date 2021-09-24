@@ -19,6 +19,8 @@ library(dplyr)
 library(ggmap)
 library(Rcpp)
 library(osrm)
+library(ECharts2Shiny)
+
 
 #import the R files inside the R folder and process them
 lapply(list.files("R"), FUN = function(x) source(paste0("R/", x)))
