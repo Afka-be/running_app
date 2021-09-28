@@ -1,6 +1,15 @@
 #' UI -> Display the Calendar with range options
-selectRunOverview_UI <- function(id) {
+#' @param df Dataframe containing the discipline's dates to enable in the calendar
+selectRunOverview_UI <- function(id, df) {
     ns <- NS(id)
+
+    alldays <- as.character(as.Date(as.Date("1970-01-01"):as.Date(Sys.Date()), origin="1970-01-01"))
+    dates_to_disable <- as.character(df$date)
+
+    # Vector of all the dates not selectable (the dates without data/runs)
+    # Difference between all the existing days and the dates from the Runs data.table
+    disabled_dates <- setdiff(alldays, dates_to_disable)
+
     fluidRow(class = "date_container",
         tagList(
             airDatepickerInput(
@@ -19,9 +28,10 @@ selectRunOverview_UI <- function(id) {
 }
 
 #' Create the Calendar with range options for stats overview
+#' @param df Dataframe containing the discipline's dates to enable in the calendar
 #' Returns a list of reactive :
 #' - theRange = Outputs dynamically the selected range date
-selectRunOverview_server <- function(id) {
+selectRunOverview_server <- function(id, df) {
     moduleServer(
         id,
         function(input, output, session) {
@@ -33,7 +43,7 @@ selectRunOverview_server <- function(id) {
             getDataTable <- reactive({
                 #check if empty or not for the req in the rendervalueboxes'
                 if (!is.null(input$select_date_range)) {
-                    dt_runs[date == input$select_date_range]
+                    df[date == input$select_date_range]
                 }
             })
 

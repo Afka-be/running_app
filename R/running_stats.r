@@ -13,6 +13,7 @@ statsCalories_UI <- function(id) {
 }
 
 #' Create a box to display the general stats of the run
+#' @param df Select the dataframe to extract informations and stats from
 #' @param date Selected Date of the run
 #' @param whichRun Selected run if the Date has multiple runs
 #' @param weight User weight stored in profile for the calories maths, etc
@@ -22,7 +23,7 @@ statsCalories_UI <- function(id) {
 #' @param icon Icon name and modifiers
 #' @param color Box's color CSS. Class styled in custom.css
 #'
-stats_server <- function(id, date, whichRun, weight, value, column, subtitle, icon, color) {
+stats_server <- function(id, df, date, whichRun, weight, value, column, subtitle, icon, color) {
     moduleServer(
         id,
         function(input, output, session) {
@@ -34,7 +35,7 @@ stats_server <- function(id, date, whichRun, weight, value, column, subtitle, ic
             getDataTable <- reactive({
                 #check if empty or not for the req in the rendervalueboxes
                 if (!is.null(date())) {
-                    dt_runs[date == date()]
+                    df[date == date()]
                 }
             })
             data <- getDataTable()
@@ -67,6 +68,7 @@ stats_server <- function(id, date, whichRun, weight, value, column, subtitle, ic
 
 
 #' Create a box to display the calories stats of the run
+#' @param df Select the dataframe to extract informations and stats from
 #' @param date Selected Date of the run
 #' @param whichRun Selected run if the Date has multiple runs
 #' @param weight User weight stored in profile for the calories maths, etc
@@ -75,7 +77,7 @@ stats_server <- function(id, date, whichRun, weight, value, column, subtitle, ic
 #' @param icon Icon name and modifiers
 #' @param color Box's color CSS. Class styled in custom.css
 #'
-statsCalories_server <- function(id, date, whichRun, weight, value, column, subtitle, icon, color) {
+statsCalories_server <- function(id, df, date, whichRun, weight, value, column, subtitle, icon, color) {
     moduleServer(
         id,
         function(input, output, session) {
@@ -87,7 +89,7 @@ statsCalories_server <- function(id, date, whichRun, weight, value, column, subt
             getDataTable <- reactive({
                 #check if empty or not for the req in the rendervalueboxes
                 if (!is.null(date())) {
-                    dt_runs[date == date()]
+                    df[date == date()]
                 }
             })
             data <- getDataTable()

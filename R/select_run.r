@@ -1,6 +1,16 @@
 #' UI -> Display the Calendar and the run select dropdown
-selectRun_UI <- function(id) {
+#' @param df Dataframe containing the discipline's dates to enable in the calendar
+selectRun_UI <- function(id, df) {
     ns <- NS(id)
+
+    alldays <- as.character(as.Date(as.Date("1970-01-01"):as.Date(Sys.Date()), origin="1970-01-01"))
+    dates_to_disable <- as.character(df$date)
+
+    # Vector of all the dates not selectable (the dates without data/runs)
+    # Difference between all the existing days and the dates from the Runs data.table
+    disabled_dates <- setdiff(alldays, dates_to_disable)
+
+
     fluidRow(class = "date_container",
         tagList(
             airDatepickerInput(
@@ -19,11 +29,12 @@ selectRun_UI <- function(id) {
 }
 
 #' Create the Calendar and the run select dropdown
-#' The run select dropdown only appears when a day contains multiple runs
+#' @param df Dataframe containing the discipline's dates to enable in the calendar
+#' The select_run dropdown only appears when a day contains multiple runs
 #' Returns a list of reactive :
 #' - theDate = Outputs dynamically the selected date
 #' - theRun = Outputs dynamically the selected if multiple runs that date
-selectRun_server <- function(id) {
+selectRun_server <- function(id, df) {
     moduleServer(
         id,
         function(input, output, session) {
@@ -35,7 +46,7 @@ selectRun_server <- function(id) {
             getDataTable <- reactive({
                 #check if empty or not for the req in the rendervalueboxes'
                 if (!is.null(input$select_date)) {
-                    dt_runs[date == input$select_date]
+                    df[date == input$select_date]
                 }
             })
 

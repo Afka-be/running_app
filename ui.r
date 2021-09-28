@@ -16,7 +16,8 @@ ui <- dashboardPage(
     inverted = TRUE,
     sidebarMenu(
       menuItem(tabName = "homepage", "Homepage", icon = icon("dashboard")),
-      menuItem(tabName = "running", "Running", icon = icon("address card"))
+      menuItem(tabName = "running", "Running", icon = icon("address card")),
+      menuItem(tabName = "biking", "Biking", icon = icon("address card"))
     )
   ),
   dashboardBody(
@@ -34,33 +35,67 @@ ui <- dashboardPage(
       tabItem(
         tabName = "homepage",
         box(h1("Welcome"), title = "How to use", width = 16, color = "orange",
+          "This is SpeedMeter App. 
+          Here you can check your various performances analyze your evolution through your trainings.",
           userProfile_UI("init")
         )
       ),
       tabItem(
         tabName = "running",
-          column(8, class = "run-container",
+          column(8, class = "ui-container",
             fluidRow(
-                #shiny::dateInput(),
-                selectRun_UI("run_date"),
-                fluidRow(class = "stats-container",
-                  stats_UI("run_distance"),
-                  stats_UI("run_time"),
-                  stats_UI("run_pace"),
-                  statsCalories_UI("run_calories"),
-                ), #fluidRow
-                runningMap_UI("run_map")
+                tags$div(class = "run-container",
+                  selectRun_UI("run_date", df = dt_runs),
+                  fluidRow(class = "stats-container",
+                    stats_UI("run_distance"),
+                    stats_UI("run_time"),
+                    stats_UI("run_pace"),
+                    statsCalories_UI("run_calories"),
+                  ), #fluidRow
+                  runningMap_UI("run_map")
+                ) #tags$div(class="run-container"
             ), #fluidRow
             fluidRow(
             ) #fluidRow
           ), #column
-          column(8, class = "run-overview-container",
+          column(8, class = "ui-container",
             fluidRow(
-              selectRunOverview_UI("run_overview"),
-              runOverview_UI("run_overview")
+              tags$div(class = "run-overview-container",
+                selectRunOverview_UI("run_overview", df = dt_runs),
+                runOverview_UI("runPace_overview"),
+                runOverview_UI("runDistance_overview")
+              ) #tags$div(class = "run-overview-container"
             ), #fluidRow
           ) #column
-        ) #tabName player
+        ), #tabName running
+        tabItem(
+        tabName = "biking",
+          column(8, class = "ui-container",
+            fluidRow(
+                tags$div(class = "run-container",
+                  selectRun_UI("bike_date", df = dt_bike),
+                  fluidRow(class = "stats-container",
+                    stats_UI("bike_distance"),
+                    stats_UI("bike_time"),
+                    stats_UI("bike_pace"),
+                    statsCalories_UI("bike_calories"),
+                  ), #fluidRow
+                  runningMap_UI("bike_map")
+                ) #tags$div(class="run-container"
+            ), #fluidRow
+            fluidRow(
+            ) #fluidRow
+          ), #column
+          column(8, class = "ui-container",
+            fluidRow(
+              tags$div(class = "run-overview-container",
+                selectRunOverview_UI("bike_overview", df = dt_bike),
+                runOverview_UI("bikePace_overview"),
+                runOverview_UI("bikeDistance_overview")
+              ) #tags$div(class = "run-overview-container"
+            ), #fluidRow
+          ) #column
+        ) #tabName biking
     ) #tabItems
   )
 )
