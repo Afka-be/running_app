@@ -5,9 +5,9 @@ server <- function(input, output, session) {
 # Initialize user profile (weight, etc)
 profileGetter <- userProfile_server("init") # Get the reactive values from the userprofile and use them as parameters for the functions that need those informations
 csvGetter <- selectDatabase_server("init", user_id = profileGetter$userId) # Get the CSV containing the runs/sports values based on the user_d currently selected
-observe({
-    view(csvGetter$dt_runs())
-})
+#observe({
+#    view(csvGetter$dt_runs())
+#})
 
 #############################
 ###       RUNNING         ###
