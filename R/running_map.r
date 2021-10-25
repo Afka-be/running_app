@@ -23,7 +23,7 @@ runningMap_server <- function(id, df, date, whichRun) {
             getDataTable <- reactive({
                 #check if empty or not for the req in the map
                 if (!is.null(date())) {
-                    df[date == date()]
+                    df()[date == date()]
                 }
             })
             data <- getDataTable()
@@ -52,10 +52,13 @@ runningMap_server <- function(id, df, date, whichRun) {
             
             leaflet() %>%
             addTiles() %>%
-            addMarkers(c(longStart, longFinish), c(latStart, latFinish)) %>%
+            addMarkers(c(longStart, longFinish), c(latStart, latFinish))  %>%
+            
             addPolylines(route$lon, route$lat,
-                        label = paste(round(route_summary[1]/60), 'hr - ', round(route_summary[2]), 'km'), 
-                        labelOptions = labelOptions(noHide = TRUE))
+            # You can uncomment the lines below to display a bubble with the distance and the time estimated for this travel
+            #             label = paste(round(route_summary[1]/60), 'hr - ', round(route_summary[2]), 'km'), 
+            #             labelOptions = labelOptions(noHide = TRUE)
+            )
             
         })
     })

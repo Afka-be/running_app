@@ -1,27 +1,10 @@
 #' UI -> Display the Calendar and the run select dropdown
-#' @param df Dataframe containing the discipline's dates to enable in the calendar
-selectRun_UI <- function(id, df) {
+selectRun_UI <- function(id) {
     ns <- NS(id)
-
-    alldays <- as.character(as.Date(as.Date("1970-01-01"):as.Date(Sys.Date()), origin="1970-01-01"))
-    dates_to_disable <- as.character(df$date)
-
-    # Vector of all the dates not selectable (the dates without data/runs)
-    # Difference between all the existing days and the dates from the Runs data.table
-    disabled_dates <- setdiff(alldays, dates_to_disable)
-
 
     fluidRow(class = "date_container",
         tagList(
-            airDatepickerInput(
-                            inputId = ns("select_date"),
-                            label = "Select the day",
-                            placeholder = "You can pick a date",
-                            update_on = "change",
-                            dateFormat = "yyyy-mm-dd",
-                            clearButton = TRUE,
-                            maxDate = Sys.Date(),
-                            disabledDates = disabled_dates),
+            uiOutput(ns("runCalendar")),
             uiOutput(ns("selectIfMultipleRunsPerDay"))
         )
     )
@@ -43,12 +26,35 @@ selectRun_server <- function(id, df) {
             #this is needed because we have to store and access the input$select_run as a reactive outside of this module
             #we use this reactive value in running_stats.r
 
+            disabled_dates <- reactive({
+                alldays <- as.character(as.Date(as.Date("1970-01-01"):as.Date(Sys.Date()), origin="1970-01-01"))
+                dates_to_disable <- as.character(df()$date)
+
+                # Vector of all the dates not selectable (the dates without data/runs)
+                # Difference between all the existing days and the dates from the Runs data.table
+                disabled_dates <- setdiff(alldays, dates_to_disable)
+                return(disabled_dates)
+            })
+            
+            output$runCalendar <- renderUI(
+                airDatepickerInput(
+                            inputId = ns("select_date"),
+                            label = "Select the day",
+                            placeholder = "You can pick a date",
+                            update_on = "change",
+                            dateFormat = "yyyy-mm-dd",
+                            clearButton = TRUE,
+                            maxDate = Sys.Date(),
+                            disabledDates = disabled_dates()),
+            )
+
             getDataTable <- reactive({
                 #check if empty or not for the req in the rendervalueboxes'
                 if (!is.null(input$select_date)) {
-                    df[date == input$select_date]
+                    df()[date == input$select_date]
                 }
             })
+           
 
             output$selectIfMultipleRunsPerDay <- renderUI({
                 req(input$select_date)

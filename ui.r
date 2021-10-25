@@ -45,7 +45,7 @@ ui <- dashboardPage(
           column(8, class = "ui-container",
             fluidRow(
                 tags$div(class = "run-container",
-                  selectRun_UI("run_date", df = dt_runs),
+                  selectRun_UI("run_date"),
                   fluidRow(class = "stats-container",
                     stats_UI("run_distance"),
                     stats_UI("run_time"),
@@ -61,7 +61,7 @@ ui <- dashboardPage(
           column(8, class = "ui-container",
             fluidRow(
               tags$div(class = "run-overview-container",
-                selectRunOverview_UI("run_overview", df = dt_runs),
+                selectRunOverview_UI("run_overview"),
                 runOverview_UI("runPace_overview"),
                 runOverview_UI("runDistance_overview")
               ) #tags$div(class = "run-overview-container"
@@ -73,7 +73,7 @@ ui <- dashboardPage(
           column(8, class = "ui-container",
             fluidRow(
                 tags$div(class = "run-container",
-                  selectRun_UI("bike_date", df = dt_bike),
+                  selectRun_UI("bike_date"),
                   fluidRow(class = "stats-container",
                     stats_UI("bike_distance"),
                     stats_UI("bike_time"),
@@ -89,7 +89,7 @@ ui <- dashboardPage(
           column(8, class = "ui-container",
             fluidRow(
               tags$div(class = "run-overview-container",
-                selectRunOverview_UI("bike_overview", df = dt_bike),
+                selectRunOverview_UI("bike_overview"),
                 runOverview_UI("bikePace_overview"),
                 runOverview_UI("bikeDistance_overview")
               ) #tags$div(class = "run-overview-container"

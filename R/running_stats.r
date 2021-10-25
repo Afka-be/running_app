@@ -35,7 +35,7 @@ stats_server <- function(id, df, date, whichRun, weight, value, column, subtitle
             getDataTable <- reactive({
                 #check if empty or not for the req in the rendervalueboxes
                 if (!is.null(date())) {
-                    df[date == date()]
+                    df()[date == date()]
                 }
             })
             data <- getDataTable()
@@ -89,7 +89,7 @@ statsCalories_server <- function(id, df, date, whichRun, weight, value, column, 
             getDataTable <- reactive({
                 #check if empty or not for the req in the rendervalueboxes
                 if (!is.null(date())) {
-                    df[date == date()]
+                    df()[date == date()]
                 }
             })
             data <- getDataTable()

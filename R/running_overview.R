@@ -33,7 +33,7 @@ runOverview_server <- function(id, df, column, legend, rangeDate) {
             # Preparing data for the graph inside a reactive
             # Changes everytime we use the range date picker
             rangeDateChart <- reactive({
-                raw <- df[date >= as.Date(rangeDate()[1], format="%Y-%m-%d") & date <= as.Date(rangeDate()[2],  format="%Y-%m-%d")]
+                raw <- df()[date >= as.Date(rangeDate()[1], format="%Y-%m-%d") & date <= as.Date(rangeDate()[2],  format="%Y-%m-%d")]
                 rangeDatedf <- data.frame(raw[, column, with = FALSE])
                 rangedfHours <- paste(raw$date, raw$hour, sep ="-")
 
