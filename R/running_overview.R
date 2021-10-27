@@ -9,7 +9,7 @@ runOverview_UI <- function(id) {
             tags$div(id=paste(id, "div", sep = "_"), style="width:100%;height:200px;padding:15px;"),
             deliverChart(div_id = ns(paste(id, "div", sep = "_")))
         ),
-        verbatimTextOutput(ns("rangedate")),
+        #verbatimTextOutput(ns("rangedate")),
     )
 }
 

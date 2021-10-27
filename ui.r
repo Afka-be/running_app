@@ -15,9 +15,14 @@ ui <- dashboardPage(
     size = "wide",
     inverted = TRUE,
     sidebarMenu(
-      menuItem(tabName = "homepage", "Homepage", icon = icon("dashboard")),
-      menuItem(tabName = "running", "Running", icon = icon("address card")),
-      menuItem(tabName = "biking", "Biking", icon = icon("address card"))
+      tags$div(class = "user-container",
+        box(h1("Welcome"), title = "Profile", collapsible = FALSE, width = 16, color = "orange",
+          userProfile_UI("init")
+        )
+      ), #tags$div(class="run-container"
+      menuItem(tabName = "homepage", "Homepage", icon = icon("address card")),
+      menuItem(tabName = "running", "Running", icon = icon("dashboard")),
+      menuItem(tabName = "biking", "Biking", icon = icon("dashboard"))
     )
   ),
   dashboardBody(
@@ -26,18 +31,15 @@ ui <- dashboardPage(
       tags$link(rel = "stylesheet", type = "text/css", href = "style/custom.css"),
       tags$head(tags$script(src="script/custom.js"))
     ),
-    #load the dependecies of "prompter" package so we can have tooltips
-    use_prompt(),
-
+    #load the dependecies of packages 
+    useShinyjs(),
 
     tabItems(
       selected = 1,
       tabItem(
         tabName = "homepage",
-        box(h1("Welcome"), title = "How to use", width = 16, color = "orange",
-          "This is SpeedMeter App. 
-          Here you can check your various performances analyze your evolution through your trainings.",
-          userProfile_UI("init")
+        box(h1("SPEEDMETER APP"), title = "How to use", width = 16, color = "orange",
+          "With this app, you can keep track of your various performances and analyze your evolution through your trainings.",
         )
       ),
       tabItem(
@@ -52,11 +54,9 @@ ui <- dashboardPage(
                     stats_UI("run_pace"),
                     statsCalories_UI("run_calories"),
                   ), #fluidRow
-                  runningMap_UI("run_map")
+                  runningMap_UI("run_map"),
                 ) #tags$div(class="run-container"
             ), #fluidRow
-            fluidRow(
-            ) #fluidRow
           ), #column
           column(8, class = "ui-container",
             fluidRow(
@@ -66,7 +66,13 @@ ui <- dashboardPage(
                 runOverview_UI("runDistance_overview")
               ) #tags$div(class = "run-overview-container"
             ), #fluidRow
-          ) #column
+          ),
+          column(16, class = "ui-container",
+            fluidRow(
+                addRun_UI("run_add")
+            ) # fluidRow
+          ),
+           #column
         ), #tabName running
         tabItem(
         tabName = "biking",
@@ -80,11 +86,9 @@ ui <- dashboardPage(
                     stats_UI("bike_pace"),
                     statsCalories_UI("bike_calories"),
                   ), #fluidRow
-                  runningMap_UI("bike_map")
+                  runningMap_UI("bike_map"),
                 ) #tags$div(class="run-container"
             ), #fluidRow
-            fluidRow(
-            ) #fluidRow
           ), #column
           column(8, class = "ui-container",
             fluidRow(
@@ -94,7 +98,12 @@ ui <- dashboardPage(
                 runOverview_UI("bikeDistance_overview")
               ) #tags$div(class = "run-overview-container"
             ), #fluidRow
-          ) #column
+          ), #column
+          column(16, class = "ui-container",
+            fluidRow(
+                addRun_UI("bike_add")
+            ) # fluidRow
+          ),
         ) #tabName biking
     ) #tabItems
   )

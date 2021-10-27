@@ -1,10 +1,11 @@
 userProfile_UI <- function(id){
     ns <- NS(id)
     tagList(
-        textOutput(ns("currentWeight")),
-        actionButton(ns("btn_edit_profile_modal"), "Change the profile/weight"),
-        actionButton(ns("btn_add_profile_modal"), "Create a new profile"),
-        uiOutput(ns("selectProfile"))
+        h3("Username : ", textOutput(ns("currentUser"), inline=T)),
+        h3("Weight : ", textOutput(ns("currentWeight"), inline=T)),
+        uiOutput(ns("selectProfile")),
+        actionButton(ns("btn_edit_profile_modal"), "Edit the name / weight"),
+        actionButton(ns("btn_add_profile_modal"), "Create a new profile")
     )
 }
 
@@ -78,10 +79,16 @@ userProfile_server <- function(id) {
                     createProfile = data.table(id = incrementedId, name = input$addNewName, weight = input$addNewWeight)
                     write.table(createProfile, "csv/profile.csv", row.names = FALSE, col.names=FALSE, sep=";", append=TRUE)
                     
-                    # Add new empty CSVs for each disciplines for this new user
-                    createCsvs = data.table(date = "", hour = "", km = "", pace = "", lat_start = "", long_start = "", lat_finish = "", long_finish = "")
-                    write.table(createCsvs, paste0("csv/running/running_data_", incrementedId ,".csv"), row.names = FALSE, sep=";") #CSV for running
-                    write.table(createCsvs, paste0("csv/biking/biking_data_", incrementedId ,".csv"), row.names = FALSE, sep=";") #CSV for biking
+                    # Add new dummy CSVs for each disciplines specifically for this new user
+                    createCsvs = data.table(date = "1990-01-01", hour = "08:00", km = "0", time = "0", pace = "0", lat_start = "50", long_start = "4", lat_finish = "50", long_finish = "4")
+                    
+                    # But don't erase the CSV if it already exist
+                    if(!file.exists(paste0("csv/running/running_data_", incrementedId ,".csv"))) {
+                        write.table(createCsvs, paste0("csv/running/running_data_", incrementedId ,".csv"), row.names = FALSE, sep=";") #CSV for running
+                    }
+                    if(!file.exists(paste0("csv/biking/biking_data_", incrementedId ,".csv"))) {
+                        write.table(createCsvs, paste0("csv/biking/biking_data_", incrementedId ,".csv"), row.names = FALSE, sep=";") #CSV for biking
+                    }
 
                     # Update the reactive values
                     userName(input$addNewName) # Update name reactiveVal
@@ -101,12 +108,12 @@ userProfile_server <- function(id) {
 
                 # Display ID and the corresponding names of users. ID is column 1 and name is column 2
                 profiles <- paste(as.character(reactiveUserData()[[1]]),as.character(reactiveUserData()[[2]]), sep = " - ")
-                selectInput(ns("profiles_dropdown"), "Select your profile:", profiles)
+                selectInput(ns("profiles_dropdown"), "You can select another profile :", profiles)
             })
             observeEvent(
                 eventExpr = input$profiles_dropdown,
                 handlerExpr = {
-                    # Isolate the ID from the select profile dropdown string
+                    # Isolate the ID from the select profile dropdown string. We split at the first space
                     splitProfile <- strsplit(input$profiles_dropdown, " ")
                     # splitProfile contains a list, but list are tricky to use so we will unlist it
                     # It makes it easier to retrieve data. We can use splitProfile[1] instead of splitProfile[[1]][1] to get the first element of the split
@@ -134,7 +141,8 @@ userProfile_server <- function(id) {
                 handlerExpr = {
                     create_modal(modal(
                         id = "modal_edit_profile",
-                        header = "Select your weight",
+                        header = "Edit the name and/or the weight",
+                        footer = actionButton(ns("btn_confirm_edit_profile"), "Edit this profile"),
                         # create a select input for the new Name and Weight
                         textInput(ns("enterNewName"), "Enter your name", value = userName()),
                         selectInput(ns("enterNewWeight"), "Enter your weight (in kg)", c(10:200))
@@ -144,8 +152,7 @@ userProfile_server <- function(id) {
             # Edit the row with the new values entered in the recently created modal
             observeEvent(
                 eventExpr = {
-                    input$enterNewName
-                    input$enterNewWeight
+                    input$btn_confirm_edit_profile
                 },
                 handlerExpr = {
                     # Browse the CSV 
@@ -159,11 +166,16 @@ userProfile_server <- function(id) {
                     # update the reactive with the new values for name and weight. ID stays the same obviously
                     userName(input$enterNewName) # Update name reactiveVal
                     userWeight(input$enterNewWeight) # Update weight reactiveVal
+                    removeModal()
                 }
             )
 
+            output$currentUser <- renderText({
+                    userName()
+            })
+
             output$currentWeight <- renderText({
-                paste("Currently selected weight for ", userName(), ":", userWeight(), "kg", sept = " ")
+                    userWeight()
             })
 
             return(

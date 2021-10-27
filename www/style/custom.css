@@ -56,6 +56,57 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
   padding: 10px;
 }
 
+.add-container {
+  display: none;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.21);
+  border-radius: 10px;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+          box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.add-container .add-fields {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.add-container .add-fields .shiny-input-container {
+  min-width: 187px;
+  width: 187px;
+}
+.add-container .add-fields .shiny-input-container label {
+  display: block;
+  margin: 0 0 4.5px 0;
+}
+.add-container .add-fields .form {
+  margin-right: 5px;
+}
+.add-container .add-button {
+  width: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+.add-container #run_add-addNewRunDate_button {
+  display: none;
+}
+
+.show_flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .run-container, .run-overview-container {
   padding: 30px;
   background-color: rgba(0, 0, 0, 0.21);
@@ -70,7 +121,7 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
   padding: 20px;
 }
 .run-container .date_container label, .run-overview-container .date_container label {
-  font: light 1.6rem sans-serif !important;
+  font: 300 1.6rem sans-serif !important;
   text-transform: uppercase !important;
   color: white;
 }
@@ -159,7 +210,7 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
   background: linear-gradient(to right, #8651e8, #d856e8);
 }
 
-.button-cta-fill, #players-chart button, .ui.button {
+.button-cta-fill, .ui.button {
   cursor: pointer;
   display: inline-block;
   outline: 0;
@@ -177,10 +228,10 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
   -webkit-transition: 0.2s all !important;
   transition: 0.2s all !important;
 }
-.button-cta-fill:hover, #players-chart button:hover, .ui.button:hover {
+.button-cta-fill:hover, .ui.button:hover {
   background-color: #ed7752;
 }
-.button-cta-fill:active, #players-chart button:active, .ui.button:active, .button-cta-fill:focus, #players-chart button:focus, .ui.button:focus {
+.button-cta-fill:active, .ui.button:active, .button-cta-fill:focus, .ui.button:focus {
   background-color: #ed7752;
 }
 
@@ -289,165 +340,27 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
   height: 60px;
 }
 
-.choose_player_window {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+.user-container {
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.21);
+  -webkit-box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+          box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
 }
-.choose_player_window .field {
-  margin-right: 10px !important;
+.user-container .button {
+  margin-top: 5px;
 }
-.choose_player_window button {
-  min-height: 38px !important;
+.user-container h3 {
+  margin: 2px 0;
+  font: 300 1.4rem sans-serif;
 }
-.choose_player_window .button_generate_doc {
-  position: absolute;
-  right: 15px;
-  display: none;
+.user-container h3:last-of-type {
+  margin-bottom: 10px;
 }
-
-.player_card {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100%;
-  color: white;
-}
-.player_card img {
-  margin-bottom: 30px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.116);
+.user-container h3 span {
+  color: #ed7752;
+  font-weight: 600;
 }
 
-.player_numbers {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.playerstats_tabset .ui.menu {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-.playerstats_tabset .ui.grid + .grid {
-  margin-top: 0 !important;
-}
-.playerstats_tabset .ui.grid > * {
-  padding: 0 !important;
-}
-.playerstats_tabset .pushable {
-  height: 401px !important;
-}
-.playerstats_tabset .ui.segment {
-  border-top: 2px solid #ed7752;
-}
-.playerstats_tabset .ui.attached.segment {
-  border: none;
-}
-.playerstats_tabset a.item {
-  color: white !important;
-  border: none !important;
-  background-color: rgba(0, 0, 0, 0.5) !important;
-}
-.playerstats_tabset a.active {
-  border-bottom: 2px solid #ed7752 !important;
-  background-color: linear-gradient(to right bottom, #60ab9d, #b33e9a, #8d3495, #632d8e, #2f2784) !important;
-}
-.playerstats_tabset .hint--left:after, .playerstats_tabset .hint--left:before {
-  right: 60%;
-}
-.playerstats_tabset .ui.menu {
-  font-size: 12px !important;
-}
-
-.playerspidercharts_tabset .ui.menu {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-.playerspidercharts_tabset .ui.grid + .grid {
-  margin-top: 0 !important;
-}
-.playerspidercharts_tabset .ui.grid > * {
-  padding: 0 !important;
-}
-.playerspidercharts_tabset .ui.segment {
-  border-top: 2px solid #ed7752;
-}
-.playerspidercharts_tabset .ui.attached.segment {
-  border: none;
-}
-.playerspidercharts_tabset a.item {
-  color: white !important;
-  border: none !important;
-  background-color: rgba(0, 0, 0, 0.5) !important;
-}
-.playerspidercharts_tabset a.active {
-  border-bottom: 2px solid #ed7752 !important;
-  background-color: linear-gradient(to right bottom, #60ab9d, #b33e9a, #8d3495, #632d8e, #2f2784) !important;
-}
-.playerspidercharts_tabset .hint--left:after, .playerspidercharts_tabset .hint--left:before {
-  right: 60%;
-}
-.playerspidercharts_tabset .ui.menu {
-  font-size: 12px !important;
-}
-.playerspidercharts_tabset .plotly .main-svg:first-child {
-  border-radius: 5px;
-  background: rgba(0, 0, 0, 0.5) !important;
-}
-.playerspidercharts_tabset .plotly .plotbg path {
-  fill: rgba(0, 0, 0, 0.5) !important;
-}
-.playerspidercharts_tabset .plotly .radial-line line {
-  stroke: white !important;
-}
-.playerspidercharts_tabset .plotly .xtick text {
-  fill: white !important;
-}
-.playerspidercharts_tabset .plotly .angularaxistick text {
-  fill: #ed7752 !important;
-}
-
-#players-chart {
-  font-family: "Montserrat", sans-serif !important;
-}
-#players-chart button {
-  height: 50px;
-}
-#players-chart .viewof_date {
-  margin: 0 0 40px 0;
-}
-#players-chart .title {
-  fill: white;
-  font: 300 2em "Montserrat", sans-serif;
-}
-#players-chart .subTitle {
-  display: none;
-}
-#players-chart .yearText {
-  fill: #ed7752;
-}
-#players-chart .valueLabel {
-  fill: white;
-}
-#players-chart .label {
-  font: 600 1em "Montserrat", sans-serif;
-  color: rgba(0, 0, 0, 0.5);
+.modal .ui.form .field > label {
+  color: #7f7f7f;
 }

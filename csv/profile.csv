@@ -1,4 +1,4 @@
-id;name;weight
-1;Yes;10
-2;New;37
-3;"mahman";"43"
+"id";"name";"weight"
+1;"Smith";56
+2;"Alf";37
+3;"Clo";32

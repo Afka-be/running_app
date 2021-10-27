@@ -20,8 +20,7 @@ selectDatabase_server <- function(id, user_id) {
             dt_runs <- dt_runs[order(as.Date(dt_runs$date, format="%Y-%m-%d"))]
             return(dt_runs)
         })
-  
-        
+
 
         #---------------------------------------------- Biking Data
 

@@ -19,6 +19,7 @@ library(dplyr)
 library(ggmap)
 library(Rcpp)
 library(osrm)
+library(shinyjs)
 library(ECharts2Shiny)
 
 

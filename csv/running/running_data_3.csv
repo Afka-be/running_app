@@ -1,2 +1,3 @@
-"date";"hour";"km";"pace";"lat_start";"long_start";"lat_finish";"long_finish"
-"";"";"";"";"";"";"";""
+"date";"hour";"km";"time";"pace";"lat_start";"long_start";"lat_finish";"long_finish"
+"1990-01-01";"08:00";"0";"0";"0";"50";"4";"50";"4"
+"2021-10-26";"08:00";"15";"25";"7";"50";"4";"51";"5"

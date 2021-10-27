@@ -21,6 +21,7 @@ stats_server("run_time", df = csvGetter$dt_runs, date = runValueGetter$theDate, 
 stats_server("run_pace", df = csvGetter$dt_runs, date = runValueGetter$theDate, whichRun = runValueGetter$theRun, weight = profileGetter$userWeight, column = "pace", subtitle = "Km/h", icon = "speed", color = "purple")
 statsCalories_server("run_calories", df = csvGetter$dt_runs, date = runValueGetter$theDate, whichRun = runValueGetter$theRun, weight = profileGetter$userWeight, column = "pace", subtitle = "Calories", icon = "calories", color = "orange")  
 runningMap_server("run_map", df = csvGetter$dt_runs, date = runValueGetter$theDate, whichRun = runValueGetter$theRun)
+addRun_server("run_add", user_id = profileGetter$userId, discipline = "running")
 
 #-------------------------------- Right Part / Overview Run
 
@@ -42,6 +43,7 @@ stats_server("bike_time", df = csvGetter$dt_bike, date = bikeValueGetter$theDate
 stats_server("bike_pace", df = csvGetter$dt_bike, date = bikeValueGetter$theDate, whichRun = bikeValueGetter$theRun, weight = profileGetter$userWeight, column = "pace", subtitle = "Km/h", icon = "speed", color = "purple")
 statsCalories_server("bike_calories", df = csvGetter$dt_bike, date = bikeValueGetter$theDate, whichRun = bikeValueGetter$theRun, weight = profileGetter$userWeight, column = "pace", subtitle = "Calories", icon = "calories", color = "orange")  
 runningMap_server("bike_map", df = csvGetter$dt_bike, date = bikeValueGetter$theDate, whichRun = bikeValueGetter$theRun)
+addRun_server("bike_add", user_id = profileGetter$userId, discipline = "biking")
 
 #-------------------------------- Right Part / Overview Biking
 
