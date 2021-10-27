@@ -52,6 +52,19 @@ stats_server <- function(id, df, date, whichRun, weight, value, column, subtitle
                 value <- data[1, column, with = FALSE] #with = FALSE because otherwise, column name via variable does not work
             }
 
+            #Append values to the global list parameters for markdown report
+            observe({
+                # because the values are scattered between multiple calls of this function
+                # we need to use a few more steps so we can have dynamic names based on the column parameter
+                
+                runstats <- list(value) # create a list that contains the value
+                names(runstats) <- column # assign a dynamic name based on the column parameter used in server.r (km, time and pace)
+                run_params <<- append(run_params, runstats) # append the new list
+                # now, run_params$km, run_params$time and run_params$pace all have the correct values
+                # and because we have dynamic names created for each call, they all coexist without erasing themselves
+            })
+
+
             HTML(paste0("<div class = 'custom_card'>",
                         "<div class = 'icon_card icon_",color,"'>",
                         "<img src='images/",icon,".svg'>",
@@ -60,6 +73,7 @@ stats_server <- function(id, df, date, whichRun, weight, value, column, subtitle
                         "<h3>", value, "</h3>",
                         "</div>"),
                         sep = "")
+
         })
 
     })
@@ -107,14 +121,19 @@ statsCalories_server <- function(id, df, date, whichRun, weight, value, column, 
                 value <- as.numeric(weight()) * 1.028 * data[1, km] #calories lost => 1.028kcal * weight in kg * distance in km
             }
 
+            observe({
+                run_params <<- append(run_params, list(calories = value ))
+            })
+
             HTML(paste0("<div class = 'custom_card'>",
                         "<div class = 'icon_card icon_",color,"'>",
                         "<img src='images/",icon,".svg'>",
                         "</div>",
-                        "<p>", subtitle, "</p>",                        
-                        "<h3>", value, "</h3>",                        
+                        "<p>", subtitle, "</p>",
+                        "<h3>", value, "</h3>",
                         "</div>"),
                         sep = "")
+
         })
 
     })

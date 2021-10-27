@@ -11,9 +11,6 @@ selectDatabase_server <- function(id, user_id) {
         # Contains our csv data (Runs)
         # dt stands for data.table (the package we use with fread)
 
-        # dt_runs <- reactiveFileReader(1000, NULL, "csv/running/running_data_2.csv", fread)
-        # observe(dt_runs <- fread(file = paste("csv/running/running_data_", user_id(), ".csv", sep="")))
-
         dt_runs <- reactive({
             dt_runs <- fread(file = paste0("csv/running/running_data_", user_id(), ".csv"))
             # Order by date, ascending
@@ -26,7 +23,6 @@ selectDatabase_server <- function(id, user_id) {
 
         # Contains our csv data (Biking)
         # dt stands for data.table (the package we use with fread)
-        # observe(dt_bike <- reactiveFileReader(1000, NULL, paste("csv/biking/biking_data_", user_id(), ".csv", sep =""), fread))
 
         dt_bike <- reactive({
             dt_bike <- fread(file = paste0("csv/biking/biking_data_", user_id(), ".csv"))

@@ -69,7 +69,8 @@ ui <- dashboardPage(
           ),
           column(16, class = "ui-container",
             fluidRow(
-                addRun_UI("run_add")
+              running_generatedoc_ui("run_doc"),
+              addRun_UI("run_add")
             ) # fluidRow
           ),
            #column
@@ -101,6 +102,7 @@ ui <- dashboardPage(
           ), #column
           column(16, class = "ui-container",
             fluidRow(
+                running_generatedoc_ui("bike_doc"),
                 addRun_UI("bike_add")
             ) # fluidRow
           ),

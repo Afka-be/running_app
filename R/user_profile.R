@@ -175,8 +175,18 @@ userProfile_server <- function(id) {
             })
 
             output$currentWeight <- renderText({
-                    userWeight()
+                    paste0(userWeight(), " kg")
             })
+            
+            # Store the values for the generated markdown
+            observe({
+                run_params <<- append(run_params, list(id = userId()))
+                run_params <<- append(run_params, list(name = userName()))
+                run_params <<- append(run_params, list(weight = userWeight()))
+            })
+
+            
+            
 
             return(
                 list(

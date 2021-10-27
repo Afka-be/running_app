@@ -30,5 +30,5 @@ lapply(list.files("R"), FUN = function(x) source(paste0("R/", x)))
 #Create a global list which welcomes parameters throughout the entire App
 #This list is used for the rmarkdown report creation
 #Stocks the values we need
-#We can use them in player_generatedoc.r + report.rmd
-player_params <<- list()
+#We can use them in running_generatedoc.r + report.rmd
+run_params <<- list()

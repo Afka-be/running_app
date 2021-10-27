@@ -69,6 +69,12 @@ selectRun_server <- function(id, df) {
                 }
             })
 
+            observe({
+                run_params <<- append(run_params, list(date = input$select_date ))
+                run_params <<- append(run_params, list(run = input$select_run ))
+            })
+            
+
             return(
                 list(
                     theDate = reactive({ input$select_date }),

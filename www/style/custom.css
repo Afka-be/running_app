@@ -364,3 +364,11 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
 .modal .ui.form .field > label {
   color: #7f7f7f;
 }
+
+.button_generate_doc {
+  background-color: #3eb3a9;
+  color: white;
+  margin-right: 10px;
+  padding: 1rem;
+  border-radius: 5px;
+}

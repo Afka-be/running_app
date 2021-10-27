@@ -45,6 +45,12 @@ runningMap_server <- function(id, df, date, whichRun) {
             longFinish <- as.numeric(values[1, long_finish])
 
 
+            # #Append values to the global list parameters for markdown report
+            run_params <<- append(run_params, list(latStart = latStart))
+            run_params <<- append(run_params, list(longStart = longStart))
+            run_params <<- append(run_params, list(latFinish = latFinish))
+            run_params <<- append(run_params, list(longFinish = longFinish))
+
             route = osrmRoute(c(longStart,latStart), c(longFinish,latFinish), overview = 'full')
             # route_simple = osrmRoute(c(115.6813467,-32.0397559), c(150.3715249,-33.8469759), overview = 'simplified')
             route_summary = osrmRoute(c(longStart,latStart), c(longFinish,latFinish), overview = FALSE)
