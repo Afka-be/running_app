@@ -36,8 +36,8 @@ selectRunOverview_server <- function(id, df) {
             output$runCalendarOverview <- renderUI(
                 airDatepickerInput(
                             inputId = ns("select_date_range"),
-                            label = "Select the range",
-                            placeholder = "You can pick a date",
+                            label = "Select 2 dates",
+                            placeholder = "You can pick 2 dates",
                             range = TRUE,
                             update_on = "change",
                             dateFormat = "yyyy-mm-dd",

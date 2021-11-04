@@ -5,10 +5,7 @@ runOverview_UI <- function(id) {
         # We MUST load the ECharts javascript library in advance
         loadEChartsLibrary(),
         loadEChartsTheme("dark-digerati"),
-        column(8,
-            tags$div(id=paste(id, "div", sep = "_"), style="width:100%;height:200px;padding:15px;"),
-            deliverChart(div_id = ns(paste(id, "div", sep = "_")))
-        ),
+        uiOutput(ns("rangeChart")),
         #verbatimTextOutput(ns("rangedate")),
     )
 }
@@ -58,5 +55,14 @@ runOverview_server <- function(id, df, column, legend, rangeDate) {
                 }
                 
             )
+
+            output$rangeChart <- renderUI({
+                req(rangeDate()[1])
+                req(rangeDate()[2])
+                div(class="range_chart",
+                    tags$div(id=paste(id, "div", sep = "_"), style="width:100%;height:200px;padding:15px;"),
+                    deliverChart(div_id = ns(paste(id, "div", sep = "_")))
+                )
+            })
         })
 }

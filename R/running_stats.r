@@ -115,10 +115,10 @@ statsCalories_server <- function(id, df, date, whichRun, weight, value, column, 
                 #match the date & distance selected and display the result
                 row <- data[km %in% select_run & date %in% date()]
 
-                value <- as.numeric(weight()) * 1.028 * row[1, km] #calories lost => 1.028kcal * weight in kg * distance in km
+                value <- as.integer(as.numeric(weight()) * 1.028 * row[1, km]) #calories lost => 1.028kcal * weight in kg * distance in km
             } else {
                 #this means we have only 1 run this day so 1 row
-                value <- as.numeric(weight()) * 1.028 * data[1, km] #calories lost => 1.028kcal * weight in kg * distance in km
+                value <- as.integer(as.numeric(weight()) * 1.028 * data[1, km]) #calories lost => 1.028kcal * weight in kg * distance in km
             }
 
             observe({

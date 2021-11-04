@@ -14,7 +14,7 @@ userProfile_server <- function(id) {
         id,
         function(input, output, session) {
             ns <- session$ns
-            userId <- reactiveVal(0) # Initialize Id reactiveVal
+            userId <- reactiveVal(1) # Initialize Id reactiveVal
             userName <- reactiveVal(0) # Initialize Name reactiveVal
             userWeight <- reactiveVal(0) # Initialize weight reactiveVal
             # We also create a reactiveFileReader so the dropdown to select the user can refresh while the app is running

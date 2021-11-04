@@ -17,7 +17,7 @@ csvGetter <- selectDatabase_server("init", user_id = profileGetter$userId) # Get
 runValueGetter <- selectRun_server("run_date", df = csvGetter$dt_runs) # Get the reactive values from the select fields's runs and use them as parameters for the functions that need those informations
 running_generatedoc_server("run_doc", date = runValueGetter$theDate) # Initialize the markdown function
 
-stats_server("run_distance", df = csvGetter$dt_runs, date = runValueGetter$theDate, whichRun = runValueGetter$theRun, weight = profileGetter$userWeight, column = "km", subtitle = "Distance", icon = "distance", color = "green")
+stats_server("run_distance", df = csvGetter$dt_runs, date = runValueGetter$theDate, whichRun = runValueGetter$theRun, weight = profileGetter$userWeight, column = "km", subtitle = "Kilometers", icon = "distance", color = "green")
 stats_server("run_time", df = csvGetter$dt_runs, date = runValueGetter$theDate, whichRun = runValueGetter$theRun, weight = profileGetter$userWeight, column = "time", subtitle = "Minutes", icon = "time", color = "blue") 
 stats_server("run_pace", df = csvGetter$dt_runs, date = runValueGetter$theDate, whichRun = runValueGetter$theRun, weight = profileGetter$userWeight, column = "pace", subtitle = "Km/h", icon = "speed", color = "purple")
 statsCalories_server("run_calories", df = csvGetter$dt_runs, date = runValueGetter$theDate, whichRun = runValueGetter$theRun, weight = profileGetter$userWeight, column = "pace", subtitle = "Calories", icon = "calories", color = "orange")  
@@ -40,7 +40,7 @@ runOverview_server("runDistance_overview", df = csvGetter$dt_runs, column = "km"
 bikeValueGetter <- selectRun_server("bike_date", df = csvGetter$dt_bike) # Get the reactive values from the select fields's runs and use them as parameters for the functions that need those informations
 running_generatedoc_server("bike_doc", date = bikeValueGetter$theDate) # Initialize the markdown function
 
-stats_server("bike_distance", df = csvGetter$dt_bike, date = bikeValueGetter$theDate, whichRun = bikeValueGetter$theRun, weight = profileGetter$userWeight, column = "km", subtitle = "Distance", icon = "distance", color = "green")
+stats_server("bike_distance", df = csvGetter$dt_bike, date = bikeValueGetter$theDate, whichRun = bikeValueGetter$theRun, weight = profileGetter$userWeight, column = "km", subtitle = "Kilometers", icon = "distance", color = "green")
 stats_server("bike_time", df = csvGetter$dt_bike, date = bikeValueGetter$theDate, whichRun = bikeValueGetter$theRun, weight = profileGetter$userWeight, column = "time", subtitle = "Minutes", icon = "time", color = "blue") 
 stats_server("bike_pace", df = csvGetter$dt_bike, date = bikeValueGetter$theDate, whichRun = bikeValueGetter$theRun, weight = profileGetter$userWeight, column = "pace", subtitle = "Km/h", icon = "speed", color = "purple")
 statsCalories_server("bike_calories", df = csvGetter$dt_bike, date = bikeValueGetter$theDate, whichRun = bikeValueGetter$theRun, weight = profileGetter$userWeight, column = "pace", subtitle = "Calories", icon = "calories", color = "orange")  

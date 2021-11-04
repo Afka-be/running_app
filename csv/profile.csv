@@ -1,4 +1,5 @@
-"id";"name";"weight"
-1;"Smith";56
-2;"Alf";37
-3;"Clo";32
+id;name;weight
+1;Smith;56
+2;Alf;37
+3;Clo;32
+4;"NewUser";"33"

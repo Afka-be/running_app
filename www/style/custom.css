@@ -152,6 +152,11 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
 .run-container .form-group, .run-overview-container .form-group {
   margin-bottom: 15px;
 }
+.run-container .range_chart, .run-overview-container .range_chart {
+  background-color: white;
+  border-radius: 5px;
+  margin: 10px 0;
+}
 
 .custom_card {
   background-color: white;
@@ -171,7 +176,7 @@ body a, h1 a, h2 a, h3 a, h4 a, h5 a {
       -ms-flex-pack: end;
           justify-content: flex-end;
   margin-top: 35px;
-  padding: 20px;
+  padding: 40px 20px 20px 20px;
   -webkit-box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
           box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
 }
